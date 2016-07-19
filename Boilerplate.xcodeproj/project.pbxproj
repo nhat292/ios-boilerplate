@@ -33,7 +33,7 @@
 		FF03E62E1D3E2C6A0010ABDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF03E6301D3E2C6A0010ABDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF03E6481D3E2F990010ABDB /* Boilerplate Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Boilerplate Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF03E6491D3E2F990010ABDB /* Boilerplate copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Boilerplate copy-Info.plist"; path = "/Users/khoitm/Development/Projects/ios-boilerplate/Boilerplate copy-Info.plist"; sourceTree = "<absolute>"; };
+		FF03E6581D3E31B20010ABDB /* Development-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Development-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,6 @@
 				FF02E12A1D38E4CB00B1B70F /* Products */,
 				2F97C9985855275229A959AF /* Pods */,
 				EA973ACCF3A472A1A5810F26 /* Frameworks */,
-				FF03E6491D3E2F990010ABDB /* Boilerplate copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +156,7 @@
 		FF03E6241D3E2C6A0010ABDB /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				FF03E6581D3E31B20010ABDB /* Development-Info.plist */,
 				FF03E6251D3E2C6A0010ABDB /* Info.plist */,
 			);
 			path = Configurations;
@@ -580,7 +580,7 @@
 			baseConfigurationReference = FE22DA178E55E8135FEBD2D6 /* Pods-Boilerplate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Boilerplate copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Boilerplate/Configurations/Development-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.innovatube.boilerplate.development;
@@ -593,7 +593,7 @@
 			baseConfigurationReference = D67D6F7A0571061F06CF1425 /* Pods-Boilerplate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Boilerplate copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Boilerplate/Configurations/Development-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.innovatube.boilerplate.development;
