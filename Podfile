@@ -26,14 +26,16 @@ target :'Boilerplate' do
 
     pod 'Firebase'
 
+    pod 'Cartography'
     pod 'Eureka'
     pod 'SlideMenuControllerSwift'
     pod 'DZNEmptyDataSet'
     pod 'Whisper'
     pod 'BWWalkthrough'
     pod 'PullToRefreshSwift'
-    pod 'AssistantKit'
 
+    pod 'AssistantKit'
+    pod 'SwiftDate'
     pod 'LoremIpsum'
 
 end
