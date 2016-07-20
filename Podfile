@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target :'Boilerplate' do
+def shared_pods
 
     pod 'Alamofire'
     pod 'Moya/RxSwift'
@@ -36,6 +36,19 @@ target :'Boilerplate' do
 
     pod 'AssistantKit'
     pod 'SwiftDate'
+
     pod 'LoremIpsum'
 
+end
+
+def testing_pods
+    # Pods for testing
+end
+
+target 'Boilerplate' do
+    shared_pods
+end
+
+target 'Boilerplate Development' do
+    shared_pods
 end
