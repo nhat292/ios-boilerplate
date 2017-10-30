@@ -1,127 +1,65 @@
-## Features
+# iOS boilerplate 
 
-### APIs
-* [ ] GET object
-* [ ] GET array
-* [ ] POST object
-* [ ] PUT object
-* [ ] PATCH object
-* [ ] DELETE object
-* [ ] Login
-* [ ] Logout
-* [ ] Register
-* [ ] Upload image
-* [ ] Download file
-* [ ] Pagination
-* [ ] Make API descriptions separate with logic code
-* [ ] Make base URLs configurable from plist
-* [ ] Unit test APIs
+## Generic task
+Task which are common and shared between all projects.
 
-### Data
-* [ ] Caching image
-* [ ] Caching file
-* [ ] Offline mode and database synchronization
-* [ ] Automatic object mapping
+### Network
+* [ ] Example API using RxMoya
+* [ ] Example for upload images
+* [ ] Example for observing data from Firebase
+* [ ] JSON Object mapping
+
+### Database
+* [ ] Saving / caching image
+* [ ] Automatic object mapping from JSON
 * [ ] Offline database with `Realm`
 * [ ] Observer data changes with `RxRealm`
 
-### Login
-* [ ] Email login with `Eureka` form
-* [ ] Facebook login
-* [ ] OTP login
-* [ ] Register account with email using `Eureka` form
-* [ ] Forget password
+### Data display ( TableView and CollectionView )
+Common features :
+* [ ] Pagination 
+* [ ] Sort
+* [ ] Cell and model separation
+* [ ] Loading state
+* [ ] Empty data state
+* [ ] Pull to refresh
 
-### UI
-* [ ] UI binding with `RxSwift`
-* [ ] TableView list with `RxDataSources`
-* [ ] CollectionView list with `RxDataSources`
-* [ ] Empty data state with `DZNEmptyDataSet`
-* [ ] Preheat list data
-* [ ] Refresh list data
-* [ ] Alert with `Whisper`
-* [ ] Setting form using `Eureka`
-* [ ] Select location using `GoogleMaps`
-* [ ] Walkthrough
+* [ ] Table view 
+    * [ ] Table with cache 
+    * [ ] Table without cache 
+* [ ] Collection view
+    * [ ] Collection without cache 
+    * [ ] Collection with cache 
 
 ### Notification
-* [ ] Push notification to simple server
+* [ ] Push notification from normal server 
+* [ ] Push notification using `Firebase`
 * [ ] Push notification using `OneSignal`
 * [ ] Receive notification and navigate to appropriate scene
 
-### Chat
-* [ ] Firebase chat
-
 ### Crash report and Analytics
 * [ ] Crashlytics
-* [ ] Analytics with `Answer` or `GoogleAnalytics`
+* [ ] Analytics with `Firebase`
 * [ ] BuddyBuild SDK
+* [ ] Overlay debug screen 
+* [ ] API logging using SwiftyBeaver
 
-### Payment and InApp Purchase
-* [ ] Stripe
-* [ ] Apple InApp Purchase
+## Specific task 
 
-### CI/CD
-* [ ] Multi-target for multi environments: Development, Alpha, Beta, Production
-* [x] Automatically check coding style and conventions using `SwiftLint`
-* [x] Automatically generate resources code using `SwiftGen`
-* [ ] Unit Testing using `Quick` and `Nimble`
-* [ ] UI Testing
-* [ ] Run unit tests with `scan`
-* [ ] Automatically create and maintain iOS code signing, provision certificates using `cert` and `sigh`
-* [ ] Automatically generate and renew your push notification profiles using `pem`
-* [ ] Sync certificates and profiles across your team using `match`
-* [ ] Automatically build all target using `gym`
-* [ ] Use `fastlane` to connect all automation tools
-* [ ] Connect `buddybuild` to project's Git to automatically build app
-* [ ] Documentation for CI/CD which include `fastlane`, `buddybuild`, `SwiftGen`, `SwiftLint`, `Unit Testing`, `UI Testing`
+### Authorization flow 
+* [ ] Sign up form
+* [ ] Login form
+    * [ ] Login and account not activated
+    * [ ] Login with Facebook 
+    * [ ] Login with Google Sign In
+* [ ] Reset password form
+* [ ] Change password form
+* [ ] Log out 
+    * [ ] Log out from FBSDK
+    * [ ] Log out from Google Sign In
 
 ## Documentation
-* [ ] Architecture
-* [ ] Project Structure
-* [ ] CI
-* [ ] UnitTest
-
-## Technics
-
-#### Code generator
-1. R.Swift
-
-#### Networking stack
-1. Alamofire
-2. Moya
-3. ObjectMapper
-4. Moya-ObjectMapper
-5. RxSwift
-6. RealmSwift
-7. RxRealm
-
-#### Image
-1. Kingfisher
-
-#### Caching
-1. HanekeSwift
-2. Nuke
-
-#### UI
-1. DZNEmptyDataSet
-2. Whisper
-3. Google Maps
-4. SlideMenuControllerSwift
-5. SnapKit
-6. BWWalkthrough
-7. Eureka
-
-#### RFP
-1. RxViewModel
-2. RxDataSources
-3. RxOptional
-4. Action
-
-#### Preheat and reload data
-1. Preheat
-2. PullToRefreshSwift
-
-#### Analytics and Crash tracking
-1. Crashlytics
-2. Answer
+* [ ] Convention guideline 
+* [ ] Linting options with `SwiftLint`
+* [ ] `Buddybuild` setup guideline 
+* [ ] `Firebase` setup guideline
