@@ -1,39 +1,53 @@
-disabled_rules: # rule identifiers to exclude from running
-  - colon
-  - comma
-  - control_statement
-  - line_length
-opt_in_rules: # some rules are only opt-in
-  - empty_count
-  # Find all the available rules by running:
-  # swiftlint rules
-included: # paths to include during linting. `--path` is ignored if present.
-excluded: # paths to ignore during linting. Takes precedence over `included`.
+excluded:
   - Pods
-
-# configurable rules can be customized from this configuration file
-# binary rules can set their severity level
-force_cast: warning # implicitly
-force_try:
-  severity: warning # explicitly
-# rules that have both warning and error levels, can set just the warning level
-# implicitly
-# they can set both implicitly with an array
+  - Boilerplate/Libraries
+  - Boilerplate/Extensions
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - unused_optional_binding
+  - identifier_name
+  - private_outlet
+  - trailing_closure
+  - large_tuple
+opt_in_rules:
+  - force_cast
+  - type_name
+  - empty_count
+  - force_unwrapping
+  - explicit_init
+  - closure_spacing
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - nimble_operator
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - first_where
+  - object_literal
+  - number_separator
+  - fatal_error_message
+  - let_var_whitespace
+  - vertical_parameter_alignment_on_call
+operator_whitespace:
+  excluded:
+    - ==
 type_body_length:
-  - 300 # warning
-  - 400 # error
-# or they can set both explicitly
+  warning: 300
+  error: 400
 file_length:
-  warning: 500
+  warning: 800
   error: 1200
-# naming rules can set warnings/errors for min_length and max_length
-# additionally they can set excluded names
+force_cast: warning
+force_try:
+  severity: warning
 type_name:
   min_length: 2 # only warning
   max_length: # warning and error
     warning: 40
     error: 50
-  excluded: iPhone # excluded via string
+  excluded: T # excluded via string
+number_separator:
+  minimum_length: 5
 identifier_name:
   min_length: # only min_length
     error: 2 # only error
@@ -43,3 +57,9 @@ identifier_name:
     - url
     - GlobalAPIKey
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+custom_rules:
+  localized_lensing:
+    name: "Localized Lensing"
+    regex: '\.~\s+Strings\s*\.'
+    message: "Capture calls to `Strings` functions using `%~ { _ in Strings... }`"
+    severity: error
