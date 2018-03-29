@@ -4,7 +4,7 @@
 Task which are common and shared between all projects.
 
 ### App config
-* [ ] Config to distribute multiple app version (for debug/ staging/ release use case)
+* [ x ] Config to distribute multiple app version (for debug/ staging/ release use case)
 
 ### Network
 * [ ] Example API using RxMoya
@@ -19,7 +19,7 @@ Task which are common and shared between all projects.
 
 ### Data display ( TableView and CollectionView )
 Common features :
-* [ ] Pagination 
+* [ X ] Pagination 
 * [ ] Sort
 * [ ] Loading state
 * [ ] Empty data state
@@ -38,4 +38,4 @@ Common features :
 
 ## Documentation
 * [ ] Convention guideline 
-* [ ] Linting options with `SwiftLint`
+* [ x ] Linting options with `SwiftLint`
