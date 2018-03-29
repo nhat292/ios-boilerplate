@@ -5,10 +5,15 @@ Task which are common and shared between all projects.
 
 ### App config
 * [x] Config to distribute multiple app version (for debug/ staging/ release use case)
+* [ ] Dependency injection
+
+###Test
+* [ ] Unit test
 
 ### Network
-* [ ] Example API using RxMoya
-* [ ] Automatic object mapping from JSON
+* [x] API using RxMoya
+* [x] Automatic object mapping from JSON
+* [ ] Example
 
 ### Database
 * [ ] Offline database with `Realm`
@@ -20,7 +25,6 @@ Task which are common and shared between all projects.
 ### Data display ( TableView and CollectionView )
 Common features :
 * [x] Pagination 
-* [ ] Sort
 * [ ] Loading state
 * [ ] Empty data state
 * [ ] Pull to refresh
@@ -34,7 +38,8 @@ Common features :
 * [ ] Overlay debug screen 
 
 ### Authorization flow 
-* [ ] Login Fb helper
+* [ ] Fb login helper
+* [ ] Google login helper
 
 ## Documentation
 * [ ] Convention guideline 
