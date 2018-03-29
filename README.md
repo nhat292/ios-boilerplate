@@ -1,22 +1,41 @@
-# ios-speedy
+# iOS boilerplate 
 
-## Guide
-1. [Create Xcode Project Templates](https://github.com/NSBoilerplate/Xcode-Project-Templates/wiki/Creating-Xcode-4.x-Project-Templates)
+## Generic task
+Task which are common and shared between all projects.
 
-2. [Xcode Custom Project Templates: Basics](https://blog.showoff.ie/xcode-custom-project-templates-basics-1e0f1f673a7f)
+### App config
+* [ ] Config to distribute multiple app version (for debug/ staging/ release use case)
 
-3. [Xcode Custom Project Templates: Advance](https://blog.showoff.ie/xcode-custom-project-templates-advance-5ac92a0f4672)
+### Network
+* [ ] Example API using RxMoya
+* [ ] Automatic object mapping from JSON
 
-4. [Xcode 8 Templates](http://samwize.com/2017/05/12/xcode-8-file-templates/)
+### Database
+* [ ] Offline database with `Realm`
+* [ ] Observer data changes with `RxRealm`
 
-5. [🔖 Xcode 4 Template Documentation](http://files.cnblogs.com/files/dongzee/Documentation.pdf)
+### DataFlow
+* [ ] Repository/ Data Store wraper upon remote and local data
 
-## Installation
+### Data display ( TableView and CollectionView )
+Common features :
+* [ ] Pagination 
+* [ ] Sort
+* [ ] Loading state
+* [ ] Empty data state
+* [ ] Pull to refresh
 
-![Template](https://github.com/quyendx/ios-speedy/blob/develop/Template.gif)
+### Notification
+* [ ] Push notification using `Firebase`
+* [ ] Receive notification and navigate to appropriate scene
 
-1. Copy `MVVM.xctemplate` and `Bundle Base.xctemplate` to `~/Library/Developer/Xcode/Templates/Project Templates /` and restart your Xcode
-2. Create the new Xcode project as usual, scroll down and select `MVVM` in `Project Templates` section
-3. Fill project information
-4. Goes to project folder, then run `pod install`
-5. 👩‍💻👩‍💻
+### Crash report and Analytics
+* [ ] Crashlytics
+* [ ] Overlay debug screen 
+
+### Authorization flow 
+* [ ] Login Fb helper
+
+## Documentation
+* [ ] Convention guideline 
+* [ ] Linting options with `SwiftLint`
