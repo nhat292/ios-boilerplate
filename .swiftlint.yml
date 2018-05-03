@@ -3,13 +3,8 @@ excluded:
   - Boilerplate/Libraries
   - Boilerplate/Extensions
 disabled_rules:
+  - todo
   - line_length
-  - trailing_whitespace
-  - unused_optional_binding
-  - identifier_name
-  - private_outlet
-  - trailing_closure
-  - large_tuple
 opt_in_rules:
   - force_cast
   - type_name
@@ -21,13 +16,17 @@ opt_in_rules:
   - redundant_nil_coalescing
   - nimble_operator
   - operator_usage_whitespace
-  - closure_end_indentation
   - first_where
-  - object_literal
-  - number_separator
   - fatal_error_message
   - let_var_whitespace
-  - vertical_parameter_alignment_on_call
+cyclomatic_complexity:
+  ignores_case_statements: true
+identifier_name:
+  max_length:
+    warning: 45
+    error: 60
+  min_length:
+    warning: 1
 operator_whitespace:
   excluded:
     - ==
@@ -38,28 +37,4 @@ file_length:
   warning: 800
   error: 1200
 force_cast: warning
-force_try:
-  severity: warning
-type_name:
-  min_length: 2 # only warning
-  max_length: # warning and error
-    warning: 40
-    error: 50
-  excluded: T # excluded via string
-number_separator:
-  minimum_length: 5
-identifier_name:
-  min_length: # only min_length
-    error: 2 # only error
-  excluded: # excluded via string array
-    - id
-    - URL
-    - url
-    - GlobalAPIKey
-reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
-custom_rules:
-  localized_lensing:
-    name: "Localized Lensing"
-    regex: '\.~\s+Strings\s*\.'
-    message: "Capture calls to `Strings` functions using `%~ { _ in Strings... }`"
-    severity: error
+force_try: warning
