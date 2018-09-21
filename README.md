@@ -1,5 +1,5 @@
 ## Architecture
-![clean architecture](https://github.com/istyle-inc/salon_app_ios/blob/develop/cleanArchitecture.png)
+![clean architecture](https://github.com/Innovatube/ios-boilerplate/blob/clean-architecture/cleanArchitecture.png)
 
 ## Directory description
 
