@@ -23,7 +23,7 @@ class APIProvider<Target> where Target: Moya.TargetType {
         let actualRequest = provider.rx.request(token)
         return online
             .skipWhile { !$0 }
-            .take(1)
+            .take(1)    // Observable<Bool> can be replace with Single<Bool>?
             .flatMap { _ in
                 return actualRequest
             }

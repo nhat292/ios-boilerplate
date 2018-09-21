@@ -1,0 +1,90 @@
+{
+    "_links": {
+        "next": {
+            "href": "https://salon-shakehands.staging-cosme.net:50010/v1/articles/top/hairsalon/2"
+        },
+        "self": {
+            "href": "https://salon-shakehands.staging-cosme.net:50010/v1/articles/top/hairsalon/1"
+        }
+    },
+    "contents": [
+                 {
+                 "answer_count": 5,
+                 "contributor": {
+                 "affiliation": "LYON hair＆makeup‐リヨン‐",
+                 "image_url": "https://img.ispot.jp/small_light(dw=400,dh=400,da=s,ds=s,ch=400,cw=400,cc=000000)/shop_img/206130/00c1ca295c95c53c49673abc4c4582f8.jpg",
+                 "job_title": "トップデザイナー",
+                 "name": "伊丹 優太"
+                 },
+                 "like_count": 0,
+                 "meta_tag": null,
+                 "published_at": "2018-06-29T13:49:30.519249048+09:00",
+                 "thumbnail_image_url": "https://fitter.cosme.net/media/bid/album/0/748/834/fce87d4419e9490cbe7982d1a174ab2b.png",
+                 "title": "『後頭部のふんわり感、絶壁に見えないバランス』 メリハリのある奥行きショートボブスタイル♪",
+                 "url": "https://www.cosme.net/beautist/article/2210409"
+                 },
+                 {
+                 "answer_count": 5,
+                 "contributor": {
+                 "affiliation": "美肌脱毛専門ディオーネ栄店【Dione】",
+                 "image_url": "https://img.ispot.jp/small_light(dw=400,dh=400,da=s,ds=s,ch=400,cw=400,cc=000000)/shop_img/302934/3e714849daa040b087406bbfb1a83fc2.jpg",
+                 "job_title": "正社員",
+                 "name": "ディオーネ"
+                 },
+                 "like_count": 0,
+                 "meta_tag": null,
+                 "published_at": "2018-06-29T13:49:30.519249048+09:00",
+                 "thumbnail_image_url": "https://fitter.cosme.net/beautist/img/common/category/bg/160708/1038_l.jpg",
+                 "title": "★髪質を守るための生活習慣★",
+                 "url": "https://www.cosme.net/beautist/article/2210307"
+                 },
+                 {
+                 "answer_count": 5,
+                 "contributor": {
+                 "affiliation": "LYON hair＆makeup‐リヨン‐",
+                 "image_url": "https://img.ispot.jp/small_light(dw=400,dh=400,da=s,ds=s,ch=400,cw=400,cc=000000)/shop_img/206130/00c1ca295c95c53c49673abc4c4582f8.jpg",
+                 "job_title": "トップデザイナー",
+                 "name": "伊丹 優太"
+                 },
+                 "like_count": 1,
+                 "meta_tag": null,
+                 "published_at": "2018-06-29T13:49:30.519249048+09:00",
+                 "thumbnail_image_url": "https://fitter.cosme.net/media/bid/album/0/746/307/065a6c439fb9404f89c587d740424ea8.jpg",
+                 "title": "髪の悩みの救世主！！ サイエンスアクアの髪質改善、アクアモイスチャーストレートの体験レポート作りました♪",
+                 "url": "https://www.cosme.net/beautist/article/2210006"
+                 },
+                 {
+                 "answer_count": 5,
+                 "contributor": {
+                 "affiliation": "",
+                 "image_url": "https://fitter.cosme.net/media/collection/1244/2354/5775333.jpg",
+                 "job_title": "保育士",
+                 "name": "かなこ.｡.:*･ﾟ･*:.｡."
+                 },
+                 "like_count": 0,
+                 "meta_tag": null,
+                 "published_at": "2018-06-29T13:49:30.519249048+09:00",
+                 "thumbnail_image_url": "https://fitter.cosme.net/media/collection/1244/2354/5847967.jpg",
+                 "title": "このシャンプーならノンシリコンでも大丈夫☆私でもキレイな髪になれたよ！",
+                 "url": "https://www.cosme.net/beautist/article/2210314"
+                 },
+                 {
+                 "answer_count": 5,
+                 "contributor": {
+                 "affiliation": "8LAMIA8（ラミア）",
+                 "image_url": "https://img.ispot.jp/small_light(dw=400,dh=400,da=s,ds=s,ch=400,cw=400,cc=000000)/shop_img/710272/d636ec6801910d8855e7fc69fe5b704d.jpg",
+                 "job_title": "代表",
+                 "name": "永井 達也"
+                 },
+                 "like_count": 0,
+                 "meta_tag": null,
+                 "published_at": "2018-06-29T13:49:30.519249048+09:00",
+                 "thumbnail_image_url": "https://fitter.cosme.net/beautist/img/common/category/bg/160708/1078_l.jpg",
+                 "title": "編み込みエクステ",
+                 "url": "https://www.cosme.net/beautist/article/2210310"
+                 }
+                 ],
+    "page": 1,
+    "size": 5,
+    "total_hits": 30
+}

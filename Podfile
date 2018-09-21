@@ -4,24 +4,39 @@ platform :ios, '10.0'
 def shared_pods
     
     # Reactive
-    pod 'RxSwift', '~> 4.0'
-    pod 'Action', '~> 3.0'
-    pod 'RxSwiftExt', '~> 3.0'
-    pod 'RxOptional', '~> 3.1'
-
+    pod 'RxSwift', '~> 4.3'
+    pod 'Action', '~> 3.8'
+    pod 'RxSwiftExt', '~> 3.3'
+    pod 'RxOptional', '~> 3.5'
+    pod 'RxDataSources', '~> 3.1'
+    
     # Style and conventions
-    pod 'SwiftLint', '~> 0.23'
+    pod 'SwiftLint', '~> 0.27'
+
+    pod 'R.swift', '~> 5.0.0.alpha.2'
+
+    pod 'DateToolsSwift', '~> 4.0'
 end
 
-target 'Salon' do
+def testing_pods
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'RxBlocking', '~> 4.3'
+    pod 'RxTest',     '~> 4.3'
+end
+
+target 'Boilerplate' do
     use_frameworks!
     inhibit_all_warnings!
 
     shared_pods
     pod 'PINRemoteImage/PINCache', '=3.0.0-beta.13'
+    pod 'HyperioniOS/Core', :configurations => ['Debug']
 
-    # Pods for Salon
-    shared_pods
+    #"Configurations => Debug" ensures it is only included in debug builds. Add any configurations you would like Hyperion to be included in.
+    pod 'HyperioniOS/AttributesInspector', :configurations => ['Debug'] # Optional plugin
+    pod 'HyperioniOS/Measurements', :configurations => ['Debug'] # Optional plugin
+    pod 'HyperioniOS/SlowAnimations', :configurations => ['Debug'] # Optional plugin
 
     post_install do |installer|
         installer.pods_project.targets.each do |target|
@@ -34,18 +49,6 @@ target 'Salon' do
             end
         end
     end
-
-    target 'SalonTests' do
-        inherit! :search_paths
-        # Pods for testing
-
-    end
-
-    target 'SalonUITests' do
-        inherit! :search_paths
-        # Pods for testing
-
-    end
 end
 
 target 'Domain' do
@@ -54,10 +57,6 @@ target 'Domain' do
 
     # Pods for Domain
     shared_pods
-
-    target 'DomainTests' do
-        inherit! :search_paths
-    end
 end
 
 target 'NetworkPlatform' do
@@ -66,15 +65,17 @@ target 'NetworkPlatform' do
 
     # Pods for NetworkPlatform
     shared_pods
-    pod 'Moya/RxSwift', '~> 10.0'
-    pod 'ObjectMapper', '~> 3.0'
-    pod 'Moya-ObjectMapper/RxSwift', '~> 2.5'
-    pod 'ReachabilitySwift', '~> 4.1'
-
+    pod 'Moya/RxSwift', '~> 11.0'
+    pod 'ObjectMapper', '~> 3.3'
+    pod 'Moya-ObjectMapper/RxSwift', '~> 2.7'
+    pod 'ReachabilitySwift', '~> 4.2'
+    
     # KeychainAccess
     pod 'KeychainAccess'
 
     target 'NetworkPlatformTests' do
         inherit! :search_paths
+
+        testing_pods
     end
 end

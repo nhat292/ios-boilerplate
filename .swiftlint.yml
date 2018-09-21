@@ -1,7 +1,11 @@
 excluded:
   - Pods
-  - Boilerplate/Libraries
-  - Boilerplate/Extensions
+  - R.generated.swift
+  - SalonTests/*
+  - SalonUITests/*
+  - DomainTests/*
+  - NetworkPlatformTests/*
+  - KeychainPlatformTests/*
 disabled_rules:
   - todo
   - line_length
@@ -19,6 +23,7 @@ opt_in_rules:
   - first_where
   - fatal_error_message
   - let_var_whitespace
+  - file_header
 cyclomatic_complexity:
   ignores_case_statements: true
 identifier_name:
@@ -27,14 +32,16 @@ identifier_name:
     error: 60
   min_length:
     warning: 1
-operator_whitespace:
+type_name:
   excluded:
-    - ==
+    - T
+    - E
 type_body_length:
   warning: 300
   error: 400
 file_length:
   warning: 800
   error: 1200
+file_header: error
 force_cast: warning
 force_try: warning

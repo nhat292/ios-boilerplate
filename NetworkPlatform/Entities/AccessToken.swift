@@ -87,10 +87,10 @@ extension AccessToken: ImmutableMappable {
         username = nil
         password = nil
 
-        accessToken = try map.value("accessToken")
-        tokenType = try map.value("tokenType")
-        refreshToken = try map.value("rememberToken")
-        let expiryTimeInterval: Int = try map.value("expiresIn")
+        accessToken = try map.value("access_token")
+        tokenType = try map.value("token_type")
+        refreshToken = try map.value("refresh_token")
+        let expiryTimeInterval: Int = try map.value("expires_in")
         expiryDate = Date().addingTimeInterval(Double(expiryTimeInterval))
     }
 }
