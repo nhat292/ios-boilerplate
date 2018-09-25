@@ -1,14 +1,10 @@
-import Domain
-import NetworkPlatform
-import RxSwift
 import RxSwift
 import RxCocoa
-import RxSwiftExt
 
 struct ArticleDetailOutput {
     let loading: Driver<Bool>
     let error: Driver<Error>
-    let article: ArticleCellModel
+    let article: Article
 }
 
 struct ArticleDetailInput {
@@ -26,19 +22,18 @@ final class ArticleDetailViewModel: ArticleDetailPresentable {
 
     private let disposeBag = DisposeBag()
 
-    init(article: ArticleCellModel?) {
+    init(article: Article?) {
         let loading = ActivityIndicator()
         let error = ErrorTracker()
 
         input = ArticleDetailInput(loadTrigger: PublishSubject<Void>())
 
-        let safeArticle: ArticleCellModel
+        let safeArticle: Article
         if let article = article {
             safeArticle = article
         } else {
-            safeArticle = ArticleCellModel.dummyArticle()
+            safeArticle = Article.dummyArticle()
         }
         output = ArticleDetailOutput(loading: loading.asDriver(), error: error.asDriver(), article: safeArticle)
     }
-
 }

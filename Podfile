@@ -38,6 +38,12 @@ target 'Boilerplate' do
     pod 'HyperioniOS/Measurements', :configurations => ['Debug'] # Optional plugin
     pod 'HyperioniOS/SlowAnimations', :configurations => ['Debug'] # Optional plugin
 
+    pod 'Moya/RxSwift', '~> 11.0'
+    pod 'ObjectMapper', '~> 3.3'
+    pod 'Moya-ObjectMapper/RxSwift', '~> 2.7'
+    pod 'ReachabilitySwift', '~> 4.2'
+    pod 'KeychainAccess'
+
     post_install do |installer|
         installer.pods_project.targets.each do |target|
             if target.name == 'RxSwift'
@@ -49,33 +55,11 @@ target 'Boilerplate' do
             end
         end
     end
-end
-
-target 'Domain' do
-    use_frameworks!
-    inhibit_all_warnings!
-
-    # Pods for Domain
-    shared_pods
-end
-
-target 'NetworkPlatform' do
-    use_frameworks!
-    inhibit_all_warnings!
-
-    # Pods for NetworkPlatform
-    shared_pods
-    pod 'Moya/RxSwift', '~> 11.0'
-    pod 'ObjectMapper', '~> 3.3'
-    pod 'Moya-ObjectMapper/RxSwift', '~> 2.7'
-    pod 'ReachabilitySwift', '~> 4.2'
-    
-    # KeychainAccess
-    pod 'KeychainAccess'
-
-    target 'NetworkPlatformTests' do
+    target 'BoilerplateTests' do
         inherit! :search_paths
-
+        # Pods for testing
         testing_pods
     end
 end
+
+

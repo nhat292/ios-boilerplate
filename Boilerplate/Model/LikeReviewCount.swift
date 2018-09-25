@@ -17,3 +17,9 @@ public struct LikeReviewCount: Codable {
         reviewCount = try? container.decode(Int64.self, forKey: "review_count")
     }
 }
+
+extension LikeReviewCount: Equatable {
+    public static func == (lhs: LikeReviewCount, rhs: LikeReviewCount) -> Bool {
+        return lhs.likeCount == rhs.likeCount && lhs.reviewCount == rhs.reviewCount
+    }
+}

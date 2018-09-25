@@ -1,8 +1,5 @@
 import UIKit
 import RxSwift
-import RxSwiftExt
-import Domain
-import NetworkPlatform
 import RxCocoa
 
 struct ArticleInput {
@@ -11,7 +8,7 @@ struct ArticleInput {
 }
 
 struct ArticleOutput {
-    let articles: Driver<[ArticleCellModel]>
+    let articles: Driver<[Article]>
     let loading: Driver<Bool>
     let error: Driver<Error>
 }
@@ -24,16 +21,16 @@ protocol ArticlePresentable {
 final class ArticleViewModel: ArticlePresentable {
     var input: ArticleInput
     var output: ArticleOutput
-    var useCase: ArticleUseCase
+    var repo: ArticleRepository
 
     private let disposeBag = DisposeBag()
 
-    init(useCase: ArticleUseCase = NetworkPlatform.UseCaseProvider().makeArticleUseCase()) {
-        self.useCase = useCase
+    init(repo: ArticleRepository = RepositoryProvider().makeArticleRepository()) {
+        self.repo = repo
         self.input = ArticleInput(loadTrigger: PublishSubject<Void>(), loadNextTrigger: PublishSubject<Void>())
 
         let articlesRequest: (_ limit: Int, _ offset: Int) -> Observable<[Article]> = { limit, offset in
-            return useCase.getTopArticles(limit: limit, offset: offset)
+            return repo.getTopArticles(limit: limit, offset: offset)
         }
         let paginationSource = PaginationSource(request: articlesRequest)
         self.input.loadTrigger
@@ -43,7 +40,6 @@ final class ArticleViewModel: ArticlePresentable {
             .bind(to: paginationSource.loadNextTrigger)
             .disposed(by: disposeBag)
         let articles = paginationSource.elements
-            .map { $0.map { ArticleCellModel(article: $0) } }
             .asDriverOnErrorJustComplete()
         let loading = paginationSource.isLoading
         let error = paginationSource.error

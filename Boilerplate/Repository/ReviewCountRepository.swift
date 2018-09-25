@@ -1,4 +1,3 @@
-import Domain
 import RxSwift
 
 final class ReviewCountRepository {

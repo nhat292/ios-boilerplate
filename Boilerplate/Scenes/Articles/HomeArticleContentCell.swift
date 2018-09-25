@@ -1,7 +1,7 @@
 import UIKit
 import RxSwift
 
-class HomeArticleContentCell: BindableTableViewCell<ArticleCellModel> {
+class HomeArticleContentCell: BindableTableViewCell<Article> {
     @IBOutlet weak var imageViewThumb: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblAuthorDesc: UILabel!
@@ -20,11 +20,12 @@ class HomeArticleContentCell: BindableTableViewCell<ArticleCellModel> {
         disposeBag = DisposeBag()
     }
 
-    override func bind(data: ArticleCellModel) {
-        imageViewThumb.pin_setImage(data.thumbUrl)
+    override func bind(data: Article) {
+        imageViewThumb.pin_setImage(data.thumbnailImageUrl)
         lblTitle.text = data.title
-        lblAuthorDesc.showContributorDescription(name: data.contributerName, jobTitle: data.contributerType, affiliation: data.contributerOrganization)
-        imageViewAuthorAvatar.pin_setImage(data.contributerAvatarUrl)
-        lblLikeCount.text = String("\(data.answerCount ?? 0)")
+        let contributer = data.contributor
+        lblAuthorDesc.showContributorDescription(name: contributer?.name, jobTitle: contributer?.jobTitle, affiliation: contributer?.affiliation)
+        imageViewAuthorAvatar.pin_setImage(contributer?.imageUrl)
+        lblLikeCount.text = String("\(data.likeCount ?? 0)")
     }
 }

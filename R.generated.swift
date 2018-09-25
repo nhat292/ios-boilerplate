@@ -16,6 +16,36 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
+  /// This `R.file` struct is generated, and contains static references to 3 files.
+  struct file {
+    /// Resource file `bad_request.json`.
+    static let bad_requestJson = Rswift.FileResource(bundle: R.hostingBundle, name: "bad_request", pathExtension: "json")
+    /// Resource file `home_headers.json`.
+    static let home_headersJson = Rswift.FileResource(bundle: R.hostingBundle, name: "home_headers", pathExtension: "json")
+    /// Resource file `home_top.json`.
+    static let home_topJson = Rswift.FileResource(bundle: R.hostingBundle, name: "home_top", pathExtension: "json")
+    
+    /// `bundle.url(forResource: "bad_request", withExtension: "json")`
+    static func bad_requestJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.bad_requestJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "home_headers", withExtension: "json")`
+    static func home_headersJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.home_headersJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "home_top", withExtension: "json")`
+    static func home_topJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.home_topJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    fileprivate init() {}
+  }
+  
   /// This `R.image` struct is generated, and contains static references to 4 images.
   struct image {
     /// Image `bg_title`.
@@ -250,9 +280,9 @@ struct _R: Rswift.Validatable {
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
-      try article.validate()
-      try launchScreen.validate()
       try articleDetail.validate()
+      try launchScreen.validate()
+      try article.validate()
     }
     
     struct article: Rswift.StoryboardResourceType, Rswift.Validatable {
@@ -265,8 +295,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "ic_top_article_like") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_top_article_like' is used in storyboard 'Article', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg_title") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bg_title' is used in storyboard 'Article', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_top_article_like") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_top_article_like' is used in storyboard 'Article', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.article().articleViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'articleViewController' could not be loaded from storyboard 'Article' as 'ArticleViewController'.") }

@@ -32,14 +32,6 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Camera Usage Description</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>FaceID Usage Description</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Location When In Use Usage Description</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Usage Description</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>icons.ttf</string>

@@ -8,7 +8,7 @@ class ArticleViewController: UITableViewController {
     var viewModel: ArticlePresentable!
     internal let disposeBag = DisposeBag()
 
-    lazy var articles: [ArticleCellModel] = []
+    lazy var articles: [Article] = []
 
     internal static func instantiate(viewModel: ArticlePresentable) -> ArticleViewController? {
         let vc = R.storyboard.article.articleViewController()
@@ -63,14 +63,14 @@ class ArticleViewController: UITableViewController {
                 guard let weakSelf = self else { return UITableViewCell() }
                 let ip = IndexPath(row: row, section: 0)
                 let cell = tv.dequeueReusableCell(withIdentifier: weakSelf.indentifier(row: row), for: ip)
-                if let cell = cell as? BindableTableViewCell<ArticleCellModel> {
+                if let cell = cell as? BindableTableViewCell<Article> {
                     cell.bind(data: article)
                 }
                 return cell
             }
             .disposed(by: disposeBag)
 
-        tableView.rx.modelSelected(ArticleCellModel.self)
+        tableView.rx.modelSelected(Article.self)
             .asDriver()
             .drive(onNext: { [weak self] in
                 if let vc = ArticleDetailViewController.instantiate(viewModel: ArticleDetailViewModel(article: $0)) {

@@ -1,7 +1,7 @@
 import UIKit
 import RxSwift
 
-class HomeArticleHeaderCell: BindableTableViewCell<ArticleCellModel> {
+class HomeArticleHeaderCell: BindableTableViewCell<Article> {
     @IBOutlet weak var imageViewThumb: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imageViewAuthorAvatar: UIImageView!
@@ -26,11 +26,12 @@ class HomeArticleHeaderCell: BindableTableViewCell<ArticleCellModel> {
         // Configure the view for the selected state
     }
 
-    override func bind(data: ArticleCellModel) {
+    override func bind(data: Article) {
         imageViewBgTitle.isHidden = false
-        imageViewThumb.pin_setImage(data.thumbUrl)
+        imageViewThumb.pin_setImage(data.thumbnailImageUrl)
         lblTitle.text = data.title
-        lblAuthorName.showContributorDescription(name: data.contributerName, jobTitle: data.contributerType, affiliation: data.contributerOrganization)
-        imageViewAuthorAvatar.pin_setImage(data.contributerAvatarUrl)
+        let contributer = data.contributor
+        lblAuthorName.showContributorDescription(name: contributer?.name, jobTitle: contributer?.jobTitle, affiliation: contributer?.affiliation)
+        imageViewAuthorAvatar.pin_setImage(contributer?.imageUrl)
     }
 }

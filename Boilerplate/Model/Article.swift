@@ -2,7 +2,7 @@ import Foundation
 
 /** 記事を表すメディアタイプ (small view) */
 
-public struct Article: Codable {
+struct Article: Codable {
 
     /** 回答数 */
     public var answerCount: Int64?
@@ -23,9 +23,11 @@ public struct Article: Codable {
     /** 遷移先URL */
     public var url: String?
 
+    init() {}
+
     // Encodable protocol methods
 
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
 
         var container = encoder.container(keyedBy: String.self)
 
@@ -42,7 +44,7 @@ public struct Article: Codable {
 
     // Decodable protocol methods
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: String.self)
 
         answerCount = try? container.decode(Int64.self, forKey: "answer_count")
@@ -60,5 +62,19 @@ public struct Article: Codable {
 extension Article: Equatable {
     public static func == (lhs: Article, rhs: Article) -> Bool {
         return lhs.answerCount == rhs.answerCount && lhs.contributor == rhs.contributor && lhs.label == rhs.label && lhs.likeCount == rhs.likeCount && lhs.metaTag == rhs.metaTag && lhs.publishedAt == rhs.publishedAt && lhs.thumbnailImageUrl == rhs.thumbnailImageUrl && lhs.title == rhs.title && lhs.url == rhs.url
+    }
+}
+
+extension Article {
+    static func dummyArticle() -> Article {
+        var article = Article()
+        article.thumbnailImageUrl = "http://file.vforum.vn/hinh/2016/04/girl-xinh-gai-dep-2016-2.jpg"
+        article.title = "「勝負ヘア」で強さ表現…美容師北沢さんにインタビュー"
+        article.contributor = Contributor(affiliation: nil,
+                                          id: nil,
+                                          imageUrl: "http://share3s.com/wp-content/uploads/2018/01/H%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-m%E1%BB%99c-m%E1%BA%A1c-khi%E1%BA%BFn-d%C3%A2n-m%E1%BA%A1ng-chao-%C4%91%E1%BA%A3o-con-tim-16.jpg",
+                                          jobTitle: nil,
+                                          name: "投稿者名1001")
+        return article
     }
 }

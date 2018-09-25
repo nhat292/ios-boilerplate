@@ -30,10 +30,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20033F87209B11F1009E8B70"
+               BlueprintIdentifier = "36F854FE215A115900ADB88F"
                BuildableName = "BoilerplateTests.xctest"
                BlueprintName = "BoilerplateTests"
                ReferencedContainer = "container:Boilerplate.xcodeproj">

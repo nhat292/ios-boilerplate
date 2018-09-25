@@ -1,22 +1,37 @@
-import Domain
-import NetworkPlatform
 import RxSwift
-import RxSwiftExt
+import RxCocoa
+
+struct HomeReviewCountInput {
+    let loadTrigger: PublishSubject<Void>
+}
+
+struct HomeReviewCountOutput {
+    let loading: Driver<Bool>
+    let error: Driver<Error>
+    let count: Driver<(likeCount: String, reviewCount: String)>
+}
+
+protocol HomeReviewCountPresentable {
+    var input: HomeReviewCountInput { get }
+    var output: HomeReviewCountOutput { get }
+}
 
 class HomeReviewCountViewModel: HomeReviewCountPresentable {
-    var presentLogic: HomeReviewCountPresentLogic
-    var interactLogic: HomeReviewCountInteractLogic
+    var input: HomeReviewCountInput
+    var output: HomeReviewCountOutput
+    let repo: ReviewCountRepository
 
     private let disposeBag = DisposeBag()
 
-    init(useCase: ReviewCountUseCase = NetworkPlatform.UseCaseProvider().makeReviewCountUseCase()) {
+    init(repo: ReviewCountRepository = RepositoryProvider().makeReviewCountRepository()) {
         let loading = ActivityIndicator()
         let error = ErrorTracker()
+        self.repo = repo
 
-        interactLogic = HomeReviewCountInteractLogic(loadTrigger: PublishSubject<Void>())
+        input = HomeReviewCountInput(loadTrigger: PublishSubject<Void>())
 
-        let count = interactLogic.loadTrigger.flatMapLatest {
-            useCase.getCount()
+        let count = input.loadTrigger.flatMapLatest {
+            repo.getCount()
                 .map { result -> (likeCount: String, reviewCount: String) in
                     let formater = NumberFormatter()
                     formater.numberStyle = .decimal
@@ -29,6 +44,6 @@ class HomeReviewCountViewModel: HomeReviewCountPresentable {
                 .materialize()
                 .elements()
             }.asDriverOnErrorJustComplete()
-        presentLogic = HomeReviewCountPresentLogic(loading: loading.asDriver(), error: error.asDriver(), count: count)
+        output = HomeReviewCountOutput(loading: loading.asDriver(), error: error.asDriver(), count: count)
     }
 }
