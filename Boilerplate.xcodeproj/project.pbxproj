@@ -434,8 +434,8 @@
 		20034077209B14DF009E8B70 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				362FC21520D1FC9800157D6B /* ArticleDetail */,
 				BD6E989E20A0094F00FBC56D /* Articles */,
+				362FC21520D1FC9800157D6B /* ArticleDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

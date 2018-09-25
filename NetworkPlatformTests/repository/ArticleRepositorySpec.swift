@@ -16,8 +16,7 @@ final class ArticleRepositorySpec: QuickSpec {
         describe("200 response") {
             beforeEach {
                 let fakeEndpointClosure = { (target: ExampleTarget) -> Endpoint in
-                    return Endpoint(url: target.baseURL.absoluteString, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, task: target.task, httpHeaderFields: nil)
-                }
+                    return Endpoint(url: target.baseURL.absoluteString, sampleResponseClosure: { .networkResponse(200, target.sampleData) }, method: target.method, task: target.task, httpHeaderFields: nil) }
                 let network = Network(provider: APIProvider<ExampleTarget>(endpointClosure: fakeEndpointClosure, stubClosure: MoyaProvider<ExampleTarget>.immediatelyStub))
                 repo = ArticleRepository(network: network)
             }
@@ -27,22 +26,22 @@ final class ArticleRepositorySpec: QuickSpec {
                 switch result {
                 case .completed(let elements):
                     let top = elements.first?.first
-                    expect(top).notTo(beNil())
+                    expect(top).toNot(beNil())
 
-                    expect(top?.answerCount).to(equal(5))
-                    expect(top?.contributor).notTo(beNil())
-                    expect(top?.likeCount).to(equal(0))
+                    expect(top?.answerCount) == 5
+                    expect(top?.contributor).toNot(beNil())
+                    expect(top?.likeCount) == 0
                     expect(top?.metaTag).to(beNil())
-                    expect(top?.title).to(equal("『後頭部のふんわり感、絶壁に見えないバランス』 メリハリのある奥行きショートボブスタイル♪"))
-                    expect(top?.url).to(equal("https://www.cosme.net/beautist/article/2210409"))
+                    expect(top?.title) == "『後頭部のふんわり感、絶壁に見えないバランス』 メリハリのある奥行きショートボブスタイル♪"
+                    expect(top?.url) == "https://www.cosme.net/beautist/article/2210409"
 
                     guard let contributor = top?.contributor else {
                         fail("Contributor must not be nil")
                         return
                     }
-                    expect(contributor.affiliation).to(equal("LYON hair＆makeup‐リヨン‐"))
-                    expect(contributor.jobTitle).to(equal("トップデザイナー"))
-                    expect(contributor.name).to(equal("伊丹 優太"))
+                    expect(contributor.affiliation) == "LYON hair＆makeup‐リヨン‐"
+                    expect(contributor.jobTitle) == "トップデザイナー"
+                    expect(contributor.name) == "伊丹 優太"
                 case .failed(_, let error):
                     fail("should be resolved: \(error.localizedDescription)")
                 }
@@ -52,23 +51,19 @@ final class ArticleRepositorySpec: QuickSpec {
         describe("401 response") {
             beforeEach {
                 let fakeEndpointClosure = { (target: ExampleTarget) -> Endpoint in
-                    return Endpoint(url: target.baseURL.absoluteString, sampleResponseClosure: {.networkResponse(200, target.stubbedResponse("bad_request"))}, method: target.method, task: target.task, httpHeaderFields: nil)
-                }
+                    return Endpoint(url: target.baseURL.absoluteString, sampleResponseClosure: { .networkResponse(200, target.stubbedResponse("bad_request")) }, method: target.method, task: target.task, httpHeaderFields: nil) }
                 let network = Network(provider: APIProvider<ExampleTarget>(endpointClosure: fakeEndpointClosure, stubClosure: MoyaProvider<ExampleTarget>.immediatelyStub))
                 repo = ArticleRepository(network: network)
             }
 
             it("Top articles", closure: {
                 let result = repo.getTopArticles(limit: 0, offset: 0).toBlocking().materialize()
-                guard case let MaterializedSequenceResult.failed(_, error) = result else {
+                guard case MaterializedSequenceResult.failed = result else {
                     fail("Response must be nil")
 
                     return
                 }
-
-                expect(error).notTo(beNil())
             })
         }
     }
-
 }

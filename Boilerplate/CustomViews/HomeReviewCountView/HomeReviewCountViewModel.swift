@@ -1,21 +1,38 @@
+import RxSwift
+import RxCocoa
 import Domain
 import NetworkPlatform
-import RxSwift
-import RxSwiftExt
+
+struct HomeReviewCountInput {
+    let loadTrigger: PublishSubject<Void>
+}
+
+struct HomeReviewCountOutput {
+    let loading: Driver<Bool>
+    let error: Driver<Error>
+    let count: Driver<(likeCount: String, reviewCount: String)>
+}
+
+protocol HomeReviewCountPresentable {
+    var input: HomeReviewCountInput { get }
+    var output: HomeReviewCountOutput { get }
+}
 
 class HomeReviewCountViewModel: HomeReviewCountPresentable {
-    var presentLogic: HomeReviewCountPresentLogic
-    var interactLogic: HomeReviewCountInteractLogic
+    var input: HomeReviewCountInput
+    var output: HomeReviewCountOutput
+    let useCase: ReviewCountUseCase
 
     private let disposeBag = DisposeBag()
 
     init(useCase: ReviewCountUseCase = NetworkPlatform.UseCaseProvider().makeReviewCountUseCase()) {
         let loading = ActivityIndicator()
         let error = ErrorTracker()
+        self.useCase = useCase
 
-        interactLogic = HomeReviewCountInteractLogic(loadTrigger: PublishSubject<Void>())
+        input = HomeReviewCountInput(loadTrigger: PublishSubject<Void>())
 
-        let count = interactLogic.loadTrigger.flatMapLatest {
+        let count = input.loadTrigger.flatMapLatest {
             useCase.getCount()
                 .map { result -> (likeCount: String, reviewCount: String) in
                     let formater = NumberFormatter()
@@ -29,6 +46,6 @@ class HomeReviewCountViewModel: HomeReviewCountPresentable {
                 .materialize()
                 .elements()
             }.asDriverOnErrorJustComplete()
-        presentLogic = HomeReviewCountPresentLogic(loading: loading.asDriver(), error: error.asDriver(), count: count)
+        output = HomeReviewCountOutput(loading: loading.asDriver(), error: error.asDriver(), count: count)
     }
 }

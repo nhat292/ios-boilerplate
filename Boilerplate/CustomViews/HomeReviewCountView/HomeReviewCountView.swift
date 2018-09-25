@@ -2,21 +2,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct HomeReviewCountPresentLogic {
-    let loading: Driver<Bool>
-    let error: Driver<Error>
-    let count: Driver<(likeCount: String, reviewCount: String)>
-}
-
-struct HomeReviewCountInteractLogic {
-    let loadTrigger: PublishSubject<Void>
-}
-
-protocol HomeReviewCountPresentable {
-    var presentLogic: HomeReviewCountPresentLogic { get }
-    var interactLogic: HomeReviewCountInteractLogic { get }
-}
-
 @IBDesignable
 class HomeReviewCountView: UIView, ReactiveType {
     @IBOutlet weak var lblReviewCount: UILabel!
@@ -63,20 +48,20 @@ class HomeReviewCountView: UIView, ReactiveType {
     }
 
     func bindViewModel() {
-        viewmodel.presentLogic.error
+        viewmodel.output.error
             .drive(onNext: {
                 print($0)
             }).disposed(by: disposeBag)
-        viewmodel.presentLogic.count
+        viewmodel.output.count
             .map { $0.reviewCount }
             .drive(lblReviewCount.rx.text)
             .disposed(by: disposeBag)
-        viewmodel.presentLogic.count
+        viewmodel.output.count
             .map { $0.likeCount }
             .drive(lblLikeCount.rx.text)
             .disposed(by: disposeBag)
 
-        viewmodel.interactLogic.loadTrigger.onNext(())
+        viewmodel.input.loadTrigger.onNext(())
     }
 
     func loadViewFromNib() -> UIView? {

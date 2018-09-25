@@ -250,8 +250,8 @@ struct _R: Rswift.Validatable {
   
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
-      try article.validate()
       try launchScreen.validate()
+      try article.validate()
       try articleDetail.validate()
     }
     
@@ -265,8 +265,8 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "ic_top_article_like") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_top_article_like' is used in storyboard 'Article', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bg_title") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bg_title' is used in storyboard 'Article', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_top_article_like") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_top_article_like' is used in storyboard 'Article', but couldn't be loaded.") }
         if #available(iOS 11.0, *) {
         }
         if _R.storyboard.article().articleViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'articleViewController' could not be loaded from storyboard 'Article' as 'ArticleViewController'.") }
